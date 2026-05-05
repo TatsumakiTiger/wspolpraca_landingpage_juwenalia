@@ -970,9 +970,8 @@ ul {
     }
 }
 
-
 /* ============================================================== */
-/* === LICZNIK ODLICZANIA - EFEKT KARTEK (FLIP CLOCK) === */
+/* === LICZNIK ODLICZANIA - EFEKT KARTEK (NAPRAWIONY) === */
 /* ============================================================== */
 
 .countdown-container {
@@ -993,7 +992,6 @@ ul {
     align-items: center;
 }
 
-/* Główna karta */
 .flip-card {
     position: relative;
     width: 70px;
@@ -1004,11 +1002,11 @@ ul {
     font-weight: 800;
     color: var(--primary, #FF6600);
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    perspective: 500px; /* Uruchamia przestrzeń 3D */
+    perspective: 800px; /* Głębsza perspektywa */
     font-family: monospace;
 }
 
-/* Pozioma linia w połowie karty (zgięcie) */
+/* Kreska zgięcia na środku */
 .flip-card::after { 
     content: "";
     position: absolute;
@@ -1021,7 +1019,6 @@ ul {
     transform: translateY(-50%);
 }
 
-/* Połówki kartek */
 .flip-card .top,
 .flip-card .bottom,
 .flip-card .flip-top,
@@ -1035,12 +1032,13 @@ ul {
     justify-content: center;
     background-color: #222222;
     border-radius: 8px;
+    backface-visibility: hidden; /* ZAPOBIEGA MRUGANIU */
+    transform-style: preserve-3d;
 }
 
-/* Ustawienie tekstu w połówkach */
 .flip-card .top, .flip-card .flip-top {
     top: 0;
-    align-items: flex-end; /* Tekst opada na dół górnej połówki */
+    align-items: flex-end;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     transform-origin: bottom;
@@ -1048,17 +1046,17 @@ ul {
 
 .flip-card .bottom, .flip-card .flip-bottom {
     bottom: 0;
-    align-items: flex-start; /* Tekst przylega do góry dolnej połówki */
+    align-items: flex-start;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     transform-origin: top;
 }
 
-/* Przesunięcie tekstu, by wyglądał jak przecięty na pół */
+/* Pozycjonowanie tekstu na połówkach */
 .flip-card .top span, .flip-card .flip-top span { transform: translateY(50%); }
 .flip-card .bottom span, .flip-card .flip-bottom span { transform: translateY(-50%); }
 
-/* === Animacje Flip === */
+/* === Animacje kartek === */
 .flip-card .flip-top {
     z-index: 3;
     animation: flipTop 0.25s ease-in forwards;
@@ -1066,18 +1064,18 @@ ul {
 
 .flip-card .flip-bottom {
     z-index: 2;
-    transform: rotateX(90deg); /* Domyślnie niewidoczna, czeka na swoją kolej */
+    transform: rotateX(90deg);
     animation: flipBottom 0.25s ease-out 0.25s forwards;
 }
 
 @keyframes flipTop {
     0% { transform: rotateX(0deg); }
-    100% { transform: rotateX(-90deg); } /* Opada w dół */
+    100% { transform: rotateX(-90deg); }
 }
 
 @keyframes flipBottom {
     0% { transform: rotateX(90deg); } 
-    100% { transform: rotateX(0deg); } /* Odsłania się */
+    100% { transform: rotateX(0deg); }
 }
 
 .countdown-label {
@@ -1089,7 +1087,6 @@ ul {
     font-weight: 600;
 }
 
-/* RWD */
 @media (max-width: 576px) {
     .flip-card { width: 50px; height: 60px; font-size: 1.8rem; }
     .countdown-container { gap: 10px; padding: 15px; }

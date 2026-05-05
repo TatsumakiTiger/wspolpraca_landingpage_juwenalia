@@ -96,58 +96,9 @@ document.querySelectorAll('.timeline-item').forEach(item => {
     revealObserver.observe(item);
 });
 
-/* ============================================================== */
-/* === LICZNIK ODLICZANIA DO JUWENALIÓW === */
-/* ============================================================== */
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Ustawiamy datę startu Juwenaliów (30 Maja 2026, godz. 17:00)
-    const countDownDate = new Date("May 30, 2026 17:00:00").getTime();
-
-    // Pobieramy elementy z HTML
-    const daysEl = document.getElementById("cd-days");
-    const hoursEl = document.getElementById("cd-hours");
-    const minutesEl = document.getElementById("cd-minutes");
-    const secondsEl = document.getElementById("cd-seconds");
-    const containerEl = document.querySelector(".countdown-container");
-
-    // Jeśli licznika nie ma na stronie, przerywamy funkcję
-    if (!daysEl) return;
-
-    // Funkcja dodająca zero wiodące (np. "05" zamiast "5")
-    const padZero = (num) => (num < 10 ? "0" + num : num);
-
-    // Aktualizujemy licznik co 1 sekundę
-    const timer = setInterval(() => {
-        const now = new Date().getTime();
-        const distance = countDownDate - now;
-
-        // Gdy odliczanie się skończy (czas minął)
-        if (distance < 0) {
-            clearInterval(timer);
-            containerEl.innerHTML = "<div style='color: var(--primary, #FF6600); font-weight: bold; font-size: 1.5rem;'>JUWENALIA TRWAJĄ! 🎉</div>";
-            return;
-        }
-
-        // Obliczenia dla dni, godzin, minut i sekund
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Zastępowanie treści w HTML
-        daysEl.innerText = padZero(days);
-        hoursEl.innerText = padZero(hours);
-        minutesEl.innerText = padZero(minutes);
-        secondsEl.innerText = padZero(seconds);
-    }, 1000);
-});
-
-
-
 
 /* ============================================================== */
-/* === LICZNIK ODLICZANIA DO JUWENALIÓW (EFEKT FLIP) === */
+/* === LICZNIK ODLICZANIA DO JUWENALIÓW (NAPRAWIONY FLIP) === */
 /* ============================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -158,29 +109,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const padZero = (num) => (num < 10 ? "0" + num : num);
 
-    // Funkcja zarządzająca animacją kartek
+    // Główna funkcja wymieniająca kartkę BEZ mrugania
     function updateCard(cardId, newValue) {
         const card = document.getElementById(cardId);
         if (!card) return;
 
-        // Szukamy aktualnej wartości widocznej na karcie
-        const topElement = card.querySelector('.top span');
-        const currentValue = topElement ? topElement.innerText : "";
+        // Znajdź statyczne warstwy (tło)
+        const topHalf = card.querySelector('.top span');
+        const bottomHalf = card.querySelector('.bottom span');
+        
+        if (!topHalf || !bottomHalf) return;
+        const currentValue = topHalf.innerText;
 
-        // Jeśli czas się nie zmienił (np. minuty stoją w miejscu), nie rób nic
+        // Jeśli czas się nie zmienił, pomiń
         if (currentValue === newValue) return;
 
-        // Tworzymy na nowo warstwy karty: 
-        // 1. .top (nowa liczba schowana pod spodem)
-        // 2. .bottom (stara liczba widoczna przed animacją dolną)
-        // 3. .flip-top (stara liczba animująca się w dół)
-        // 4. .flip-bottom (nowa liczba dokończająca animację w dół)
-        card.innerHTML = `
-            <div class="top"><span>${newValue}</span></div>
-            <div class="bottom"><span>${currentValue}</span></div>
-            <div class="flip-top"><span>${currentValue}</span></div>
-            <div class="flip-bottom"><span>${newValue}</span></div>
-        `;
+        // 1. Zmieniamy górną (tylną) kartkę na NOWĄ wartość (zostanie odsłonięta)
+        topHalf.innerText = newValue;
+        // Dolna (tylna) kartka zatrzymuje STARĄ wartość (aż animacja się nie skończy)
+        bottomHalf.innerText = currentValue;
+
+        // 2. Generujemy tymczasowe animowane kartki
+        const flipTop = document.createElement('div');
+        flipTop.classList.add('flip-top');
+        flipTop.innerHTML = `<span>${currentValue}</span>`; // Opadająca góra ze starą wartością
+
+        const flipBottom = document.createElement('div');
+        flipBottom.classList.add('flip-bottom');
+        flipBottom.innerHTML = `<span>${newValue}</span>`; // Opadający dół z nową wartością
+
+        // Wrzucamy animowane kartki na stronę
+        card.appendChild(flipTop);
+        card.appendChild(flipBottom);
+
+        // 3. Po zakończeniu animacji (0.5 sekundy) sprzątamy i aktualizujemy tło
+        setTimeout(() => {
+            bottomHalf.innerText = newValue; // Dół też ma już nową wartość
+            if(card.contains(flipTop)) card.removeChild(flipTop);       // Kasujemy tymczasową kartkę
+            if(card.contains(flipBottom)) card.removeChild(flipBottom); // Kasujemy tymczasową kartkę
+        }, 500); 
     }
 
     const timer = setInterval(() => {
@@ -198,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Odpalamy aktualizację dla każdego bloku
+        // Uruchamiamy aktualizację
         updateCard("cd-days", padZero(days).toString());
         updateCard("cd-hours", padZero(hours).toString());
         updateCard("cd-minutes", padZero(minutes).toString());
