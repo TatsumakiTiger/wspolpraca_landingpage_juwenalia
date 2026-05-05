@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Juwenalia AT Tarnów 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+
     <!-- ============================== -->
     <!-- NAWIGACJA — Osoba A            -->
     <!-- ============================== -->
@@ -19,8 +22,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#hero">Start</a></li>
                 <li><a href="#program">Program</a></li>
-                <li><a href="#about">O wydarzeniu</a></li>
-                <li><a href="#info">Informacje</a></li>
+                <li><a href="#o-wydarzeniu">O wydarzeniu</a></li>
+                <li><a href="#informacje-praktyczne">Informacje</a></li>
                 <li><a href="#contact">Kontakt</a></li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -30,14 +33,8 @@
             </button>
         </div>
     </nav>
- 
-    <!-- HERO — Osoba A (TODO) -->
-    <section id="hero"></section>
- 
-    <!-- PROGRAM — Osoba A (TODO) -->
-    <section id="program"></section>
 
-<!-- ============================== -->
+    <!-- ============================== -->
     <!-- HERO — Osoba A                 -->
     <!-- ============================== -->
     <section class="hero" id="hero">
@@ -46,7 +43,6 @@
         <div class="hero-gradient-orb hero-orb-2"></div>
 
         <div class="hero-container">
-            <!-- Lewa strona: treść -->
             <div class="hero-content">
                 <p class="hero-eyebrow">Akademia Tarnowska zaprasza</p>
                 <h1 class="hero-title">
@@ -82,7 +78,6 @@
                 </a>
             </div>
 
-            <!-- Prawa strona: dekoracja -->
             <div class="hero-visual">
                 <div class="hero-date-block">
                     <span class="date-day">30</span>
@@ -186,79 +181,89 @@
         </div>
     </section>
 
+    <!-- ============================== -->
+    <!-- O WYDARZENIU — Osoba B         -->
+    <!-- ============================== -->
     <section id="o-wydarzeniu" class="b-section b-fade-in">
-  <div class="b-container">
-    <h2 class="b-section-title">O wydarzeniu</h2>
-    <div class="b-about-grid">
-      <div class="b-about-card">
-        <h3>Czym są Juwenalia?</h3>
-        <p>Tarnowskie Juwenalia to największe studenckie święto w regionie! Dni pełne świetnej muzyki, niezapomnianych koncertów, potężnej dawki energii i integracji całego środowiska akademickiego. W 2026 roku bawimy się jeszcze głośniej!</p>
-      </div>
-      <div class="b-about-card">
-        <h3>Akademia Tarnowska (AT)</h3>
-        <p>Główny organizator wydarzenia. Uczelnia, która łączy tradycję z nowoczesnością, kształcąc profesjonalistów. Kampus Akademii Tarnowskiej to od lat serce studenckiego życia, w którym wiedza spotyka się z pasją i rozrywką.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="informacje-praktyczne" class="b-section b-bg-secondary b-fade-in">
-  <div class="b-container">
-    <h2 class="b-section-title">Informacje praktyczne</h2>
-    <div class="b-info-cards">
-      <div class="b-info-card">
-        <span class="b-icon">📍</span>
-        <h3>Lokalizacja</h3>
-        <p>Kampus Akademii Tarnowskiej<br>ul. Mickiewicza 8, Tarnów</p>
-      </div>
-      <div class="b-info-card">
-        <span class="b-icon">📅</span>
-        <h3>Data</h3>
-        <p>Maja 2026<br>Dokładne terminy wkrótce!</p>
-      </div>
-      <div class="b-info-card">
-        <span class="b-icon">🎟️</span>
-        <h3>Bilety / Wejściówki</h3>
-        <p><strong>Wstęp wolny!</strong><br>Impreza otwarta dla wszystkich mieszkańców Tarnowa.</p>
-      </div>
-    </div>
-    
-    <div class="b-map-container b-fade-in">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2564.041490212005!2d20.985959576924845!3d50.01053151893541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473d836100918dd7%3A0x86bb731ab4043b35!2sAkademia%20Tarnowska!5e0!3m2!1spl!2spl!4v1714000000000!5m2!1spl!2spl" 
-        width="100%" 
-        height="400" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-  </div>
-</section>
-
-<footer class="b-footer">
-  <div class="b-container">
-    <div class="b-footer-content">
-      <div class="b-footer-contact">
-        <h3>Kontakt</h3>
-        <p>Email: ans@anstar.edu.pl</p>
-        <p>Tel: (14) 63 16 620</p>
-      </div>
-      <div class="b-footer-social">
-        <h3>Social Media</h3>
-        <div class="b-social-links">
-          <a href="https://www.facebook.com/AKADEMIATARNOWSKA/">Facebook</a>
-          <a href="https://www.instagram.com/akademia.tarnowska/">Instagram</a>
-          <a href="https://www.tiktok.com/@akademia.tarnowska">TikTok</a>
+        <div class="b-container">
+            <h2 class="b-section-title">O wydarzeniu</h2>
+            <div class="b-about-grid">
+                <div class="b-about-card">
+                    <h3>Czym są Juwenalia?</h3>
+                    <p>Tarnowskie Juwenalia to największe studenckie święto w regionie! Dni pełne świetnej muzyki, niezapomnianych koncertów, potężnej dawki energii i integracji całego środowiska akademickiego. W 2026 roku bawimy się jeszcze głośniej!</p>
+                </div>
+                <div class="b-about-card">
+                    <h3>Akademia Tarnowska (AT)</h3>
+                    <p>Główny organizator wydarzenia. Uczelnia, która łączy tradycję z nowoczesnością, kształcąc profesjonalistów. Kampus Akademii Tarnowskiej to od lat serce studenckiego życia, w którym wiedza spotyka się z pasją i rozrywką.</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="b-footer-bottom">
-      <p>&copy; 2026 Akademia Tarnowska. Juwenalia 2026. Wszelkie prawa zastrzeżone.</p>
-    </div>
-  </div>
-</footer>
- <script src="skrypt.js"></script>
+    </section>
+
+    <!-- ============================== -->
+    <!-- INFORMACJE — Osoba B           -->
+    <!-- ============================== -->
+    <section id="informacje-praktyczne" class="b-section b-bg-secondary b-fade-in">
+        <div class="b-container">
+            <h2 class="b-section-title">Informacje praktyczne</h2>
+            <div class="b-info-cards">
+                <div class="b-info-card">
+                    <span class="b-icon">📍</span>
+                    <h3>Lokalizacja</h3>
+                    <p>Kampus Akademii Tarnowskiej<br>ul. Mickiewicza 8, Tarnów</p>
+                </div>
+                <div class="b-info-card">
+                    <span class="b-icon">📅</span>
+                    <h3>Data</h3>
+                    <p>Maja 2026<br>Dokładne terminy wkrótce!</p>
+                </div>
+                <div class="b-info-card">
+                    <span class="b-icon">🎟️</span>
+                    <h3>Bilety / Wejściówki</h3>
+                    <p><strong>Wstęp wolny!</strong><br>Impreza otwarta dla wszystkich mieszkańców Tarnowa.</p>
+                </div>
+            </div>
+
+            <div class="b-map-container b-fade-in">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2564.041490212005!2d20.985959576924845!3d50.01053151893541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473d836100918dd7%3A0x86bb731ab4043b35!2sAkademia%20Tarnowska!5e0!3m2!1spl!2spl!4v1714000000000!5m2!1spl!2spl"
+                    width="100%"
+                    height="400"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- FOOTER — Osoba B               -->
+    <!-- ============================== -->
+    <footer id="contact" class="b-footer">
+        <div class="b-container">
+            <div class="b-footer-content">
+                <div class="b-footer-contact">
+                    <h3>Kontakt</h3>
+                    <p>Email: ans@anstar.edu.pl</p>
+                    <p>Tel: (14) 63 16 620</p>
+                </div>
+                <div class="b-footer-social">
+                    <h3>Social Media</h3>
+                    <div class="b-social-links">
+                        <a href="https://www.facebook.com/AKADEMIATARNOWSKA/">Facebook</a>
+                        <a href="https://www.instagram.com/akademia.tarnowska/">Instagram</a>
+                        <a href="https://www.tiktok.com/@akademia.tarnowska">TikTok</a>
+                    </div>
+                </div>
+            </div>
+            <div class="b-footer-bottom">
+                <p>&copy; 2026 Akademia Tarnowska. Juwenalia 2026. Wszelkie prawa zastrzeżone.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="skrypt.js"></script>
 </body>
 </html>
