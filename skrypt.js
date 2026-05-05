@@ -95,3 +95,50 @@ const revealObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.timeline-item').forEach(item => {
     revealObserver.observe(item);
 });
+
+/* ============================================================== */
+/* === LICZNIK ODLICZANIA DO JUWENALIÓW === */
+/* ============================================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Ustawiamy datę startu Juwenaliów (30 Maja 2026, godz. 17:00)
+    const countDownDate = new Date("May 30, 2026 17:00:00").getTime();
+
+    // Pobieramy elementy z HTML
+    const daysEl = document.getElementById("cd-days");
+    const hoursEl = document.getElementById("cd-hours");
+    const minutesEl = document.getElementById("cd-minutes");
+    const secondsEl = document.getElementById("cd-seconds");
+    const containerEl = document.querySelector(".countdown-container");
+
+    // Jeśli licznika nie ma na stronie, przerywamy funkcję
+    if (!daysEl) return;
+
+    // Funkcja dodająca zero wiodące (np. "05" zamiast "5")
+    const padZero = (num) => (num < 10 ? "0" + num : num);
+
+    // Aktualizujemy licznik co 1 sekundę
+    const timer = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+
+        // Gdy odliczanie się skończy (czas minął)
+        if (distance < 0) {
+            clearInterval(timer);
+            containerEl.innerHTML = "<div style='color: var(--primary, #FF6600); font-weight: bold; font-size: 1.5rem;'>JUWENALIA TRWAJĄ! 🎉</div>";
+            return;
+        }
+
+        // Obliczenia dla dni, godzin, minut i sekund
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Zastępowanie treści w HTML
+        daysEl.innerText = padZero(days);
+        hoursEl.innerText = padZero(hours);
+        minutesEl.innerText = padZero(minutes);
+        secondsEl.innerText = padZero(seconds);
+    }, 1000);
+});
