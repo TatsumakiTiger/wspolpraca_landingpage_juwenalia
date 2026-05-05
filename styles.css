@@ -520,3 +520,257 @@ ul {
         padding: 0.4rem 0.8rem;
     }
 }
+
+/* === PROGRAM / LINEUP — Osoba A === */
+
+.program {
+    padding: 7rem 2rem;
+    position: relative;
+}
+
+.program-container {
+    max-width: 850px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.section-header {
+    text-align: left;
+    margin-bottom: 4rem;
+    max-width: 500px;
+}
+
+.section-tag {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 0.6rem;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    letter-spacing: 2px;
+    line-height: 0.95;
+    margin-bottom: 1rem;
+}
+
+.section-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    max-width: 420px;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(232, 80, 26, 0.25) 10%,
+        rgba(232, 200, 0, 0.15) 50%,
+        rgba(232, 80, 26, 0.25) 90%,
+        transparent
+    );
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(16px);
+}
+
+.timeline-item.visible {
+    animation: revealItem 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes revealItem {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 14px;
+    top: 1.4rem;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--bg-dark);
+    border: 2px solid rgba(232, 80, 26, 0.5);
+    z-index: 2;
+    transition: var(--transition);
+}
+
+.timeline-item:hover .timeline-dot {
+    border-color: var(--primary);
+    background: rgba(232, 80, 26, 0.15);
+}
+
+.dot-headliner {
+    width: 17px;
+    height: 17px;
+    left: 12px;
+    background: var(--primary);
+    border: none;
+    /* tinted shadow not neon glow (taste-skill) */
+    box-shadow: 0 0 12px rgba(232, 80, 26, 0.25);
+}
+
+.timeline-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+    transition: transform var(--transition), border-color var(--transition), background var(--transition);
+    /* inner refraction (taste-skill liquid glass) */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.timeline-card:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(4px);
+}
+
+.card-headliner {
+    background: rgba(232, 80, 26, 0.05);
+    border-color: rgba(232, 80, 26, 0.15);
+}
+
+.card-headliner:hover {
+    border-color: rgba(232, 80, 26, 0.3);
+    background: rgba(232, 80, 26, 0.08);
+}
+
+.card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-hour {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: var(--primary-light);
+}
+
+.timeline-name {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.2px;
+}
+
+.headliner-name {
+    font-size: 1.35rem;
+    background: linear-gradient(135deg, var(--primary), var(--accent-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.timeline-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+}
+
+.timeline-tag {
+    display: inline-block;
+    padding: 0.2rem 0.65rem;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    border: 1px solid;
+}
+
+.tag-event {
+    border-color: rgba(138, 43, 226, 0.2);
+    color: #b07cd8;
+    background: rgba(138, 43, 226, 0.08);
+}
+
+.tag-music {
+    border-color: rgba(232, 80, 26, 0.2);
+    color: var(--primary-light);
+    background: rgba(232, 80, 26, 0.08);
+}
+
+.tag-headliner {
+    border-color: rgba(232, 200, 0, 0.2);
+    color: var(--accent);
+    background: rgba(232, 200, 0, 0.08);
+}
+
+.tag-party {
+    border-color: rgba(220, 70, 140, 0.2);
+    color: #e070a8;
+    background: rgba(220, 70, 140, 0.08);
+}
+
+/* === RESPONSIVE PROGRAM — Osoba A === */
+
+@media (max-width: 768px) {
+    .timeline-line {
+        left: 14px;
+    }
+
+    .timeline-item {
+        padding-left: 46px;
+    }
+
+    .timeline-dot {
+        left: 9px;
+        width: 11px;
+        height: 11px;
+    }
+
+    .dot-headliner {
+        width: 15px;
+        height: 15px;
+        left: 7px;
+    }
+
+    .section-header {
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .program {
+        padding: 5rem 1.2rem;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .timeline-card {
+        padding: 1rem 1.2rem;
+    }
+
+    .timeline-hour {
+        font-size: 1.3rem;
+    }
+}
